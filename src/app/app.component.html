@@ -1,0 +1,56 @@
+<div>
+  <div class="topnav">
+    <a class="active" href="#home">Home</a>
+    <div class="dropdown">
+      <button class="dropbtn" routerLink="/produto">Gerir Catálogo
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a (click)="homeFalse()" routerLink="/produto">Gerir Produtos</a>
+        <a (click)="homeFalse()" routerLink="/item">Gerir Itens</a>
+      </div>
+    </div>
+    <!--<a routerLink="/produto">Gerir Produtos</a>
+    <a routerLink="/item">Gerir Itens</a>
+    <div class="dropdown">
+      <button class="dropbtn" routerLink="/produto">Gerir Produtos
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a>Criar Produtos</a>
+        <a>Listar Produtos</a>
+        <a>Procurar Produto</a>
+        <a>Editar Produto</a>
+        <a>Apagar Produto</a>
+      </div>
+    </div>
+    <div class="dropdown">
+      <button class="dropbtn">Gerir Itens
+        <i class="fa fa-caret-down"></i>
+      </button>
+      <div class="dropdown-content">
+        <a >Criar Itens</a>
+        <a >Listar Itens</a>
+        <a >Procurar Item</a>
+        <a routerLink="/item" >Editar Itens</a>
+        <a >Apagar Itens</a>
+      </div>
+    </div>-->
+  </div>
+  <div *ngIf="home" style="text-align:center">
+    <h1>
+      Bem-vindo à {{title}}!
+    </h1>
+    <h2>
+      O seu site de Gestão de Catálogos
+    </h2>
+    <footer style="text-align:center">
+      <p> ISEP - Engenharia Informatica</p>
+      <p> Ana Macedo</p>
+      <p> Joseane Semedo</p>
+    </footer>
+  </div>
+
+
+  <router-outlet></router-outlet>
+</div>

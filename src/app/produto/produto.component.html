@@ -1,0 +1,93 @@
+<div class="margin" style="text-align:center">
+  <h1>Gestão de Produtos</h1>
+  <button class="buttonA button2" (click)="criarProduto()">Criar Produto</button>
+  <button class="buttonA button2" (click)="editarProduto()">Editar Produto</button>
+  <button class="buttonA button2" (click)="apagarProduto()">Apagar Produto</button>
+  <button class="buttonA button2" (click)="listarProduto()">Listar Produtos</button>
+  <button class="buttonA button2" (click)="procurarProduto()">Procurar Produto</button>
+</div>
+
+<div *ngIf="produtoEditar" style="text-align:center">
+  <div style="width:500px;" style="text-align:center">
+    <span>Produto: </span>
+    <select>
+      <option value="0">Selecione o Produto:</option>
+      <option value="1">Audi</option>
+    </select>
+  </div>
+  <h2>{{produto.nome | uppercase}} Details</h2>
+  <div><span>id: </span>{{produto.id}}</div>
+  <div>
+    <label>nome:
+      <input [(ngModel)]="produto.nome" placeholder="nome" />
+    </label>
+  </div>
+  <button (click)="save()">save</button>
+</div>
+
+<div *ngIf="produtoCriar" style="text-align:center">
+  <h1>Crie o seu produto</h1>
+  <div><span>Nome: </span>
+    <input placeholder="nome" />
+  </div>
+  <br>
+  <div style="width:500px;" style="text-align:center">
+    <span>Categoria: </span>
+    <select>
+      <option value="0">Selecione a Categoria:</option>
+      <option value="1">Audi</option>
+    </select>
+  </div>
+  <br>
+  <div style="width:500px;" style="text-align:center">
+    <span>Material: </span>
+    <select>
+      <option value="0">Selecione o Material:</option>
+      <option value="1">Audi</option>
+    </select>
+  </div>
+  <br>
+  <div style="width:500px;" style="text-align:center">
+    <span>Acabamento: </span>
+    <select>
+      <option value="0">Selecione o Acabamento:</option>
+      <option value="1">Audi</option>
+    </select>
+  </div>
+  <br>
+  <div><span>Dimensão: </span>
+    <input placeholder="nome" />
+  </div>
+  <button (click)="save()">save</button>
+</div>
+
+<div *ngIf="produtoApagar" style="text-align:center">
+  <div style="width:500px;" style="text-align:center">
+    <span>Produtos: </span>
+    <select>
+      <option value="0">Selecione o Produto:</option>
+      <option value="1">Audi</option>
+    </select>
+  </div>
+  <button (click)="delete()">Apagar</button>
+</div>
+
+<div *ngIf="produtosListar" style="text-align:center">
+  <div style="width:500px;" style="text-align:center">
+    <span>Produtos: </span>
+    <select>
+      <option value="0">Selecione o Produto:</option>
+      <option value="1">Audi</option>
+    </select>
+  </div>
+</div>
+
+<div *ngIf="produtoProcurar" style="text-align:center">
+  <div style="width:500px;" style="text-align:center">
+    <span>Acabamento: </span>
+    <select>
+      <option value="0">Selecione o Acabamento:</option>
+      <option value="1">Audi</option>
+    </select>
+  </div>
+</div>
