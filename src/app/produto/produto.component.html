@@ -9,85 +9,133 @@
 
 <div *ngIf="produtoEditar" style="text-align:center">
   <div style="width:500px;" style="text-align:center">
-    <span>Produto: </span>
-    <select>
-      <option value="0">Selecione o Produto:</option>
-      <option value="1">Audi</option>
-    </select>
+    <span>Produto</span>
+    <mat-form-field>
+      <mat-select placeholder="Produto">
+        <mat-option *ngFor="let p of produtos" [value]="p.nome">
+          {{p.nome}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
-  <h2>{{produto.nome | uppercase}} Details</h2>
-  <div><span>id: </span>{{produto.id}}</div>
   <div>
-    <label>nome:
-      <input [(ngModel)]="produto.nome" placeholder="nome" />
-    </label>
+      <span>Nome: </span>
+      <input [(ngModel)]="p.nome" placeholder="nome" />
+    </div>  
+  <br>
+  <span>Categoria: </span>
+  <mat-form-field>
+    <mat-select placeholder="Categoria">
+      <mat-option *ngFor="let c of categorias" [value]="c.taxonomia">
+        {{c.taxonomia}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <span>Material: </span>
+  <mat-form-field>
+    <mat-select placeholder="Material">
+      <mat-option *ngFor="let m of materiais" [value]="m.descricao">
+        {{m.descricao}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <br>
+  <span>Acabamento: </span>
+    <mat-form-field>
+      <mat-select placeholder="Acabamento">
+        <mat-option *ngFor="let a of acabamentos" [value]="a.descricao">
+          {{a.descricao}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  <br>
+  <div><span>Dimensão: </span>
+    <input placeholder="dimensão" />
   </div>
   <button (click)="save()">save</button>
 </div>
 
 <div *ngIf="produtoCriar" style="text-align:center">
-  <h1>Crie o seu produto</h1>
-  <div><span>Nome: </span>
+  <div>
+    <span>Nome: </span>
     <input placeholder="nome" />
   </div>
   <br>
   <div style="width:500px;" style="text-align:center">
-    <span>Categoria: </span>
-    <select>
-      <option value="0">Selecione a Categoria:</option>
-      <option value="1">Audi</option>
-    </select>
+    <span>Categoria</span>
+    <mat-form-field>
+      <mat-select placeholder="Categoria">
+        <mat-option *ngFor="let c of categorias" [value]="c.taxonomia">
+          {{c.taxonomia}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
   <br>
-  <div style="width:500px;" style="text-align:center">
-    <span>Material: </span>
-    <select>
-      <option value="0">Selecione o Material:</option>
-      <option value="1">Audi</option>
-    </select>
-  </div>
+  <span>Material: </span>
+  <mat-form-field>
+    <mat-select placeholder="Material">
+      <mat-option *ngFor="let m of materiais" [value]="m.descricao">
+        {{m.descricao}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
   <br>
-  <div style="width:500px;" style="text-align:center">
-    <span>Acabamento: </span>
-    <select>
-      <option value="0">Selecione o Acabamento:</option>
-      <option value="1">Audi</option>
-    </select>
-  </div>
+  <span>Acabamento: </span>
+    <mat-form-field>
+      <mat-select placeholder="Acabamento">
+        <mat-option *ngFor="let a of acabamentos" [value]="a.descricao">
+          {{a.descricao}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   <br>
   <div><span>Dimensão: </span>
-    <input placeholder="nome" />
+    <input placeholder="dimensão" />
   </div>
   <button (click)="save()">save</button>
 </div>
 
 <div *ngIf="produtoApagar" style="text-align:center">
   <div style="width:500px;" style="text-align:center">
-    <span>Produtos: </span>
-    <select>
-      <option value="0">Selecione o Produto:</option>
-      <option value="1">Audi</option>
-    </select>
+    <span>Produto</span>
+    <mat-form-field>
+      <mat-select placeholder="Produto">
+        <mat-option *ngFor="let p of produtos" [value]="p.nome">
+          {{p.nome}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
   <button (click)="delete()">Apagar</button>
 </div>
 
 <div *ngIf="produtosListar" style="text-align:center">
   <div style="width:500px;" style="text-align:center">
-    <span>Produtos: </span>
-    <select>
-      <option value="0">Selecione o Produto:</option>
-      <option value="1">Audi</option>
-    </select>
+    
   </div>
 </div>
 
 <div *ngIf="produtoProcurar" style="text-align:center">
   <div style="width:500px;" style="text-align:center">
-    <span>Acabamento: </span>
-    <select>
-      <option value="0">Selecione o Acabamento:</option>
-      <option value="1">Audi</option>
-    </select>
+    <span>Produto</span>
+    <mat-form-field>
+      <mat-select placeholder="Produto">
+        <mat-option *ngFor="let p of produtos" [value]="p.nome">
+          {{p.nome}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field> <br>
+    <label>Nome:  </label> <br>
+    <label>{{p.nome}}</label> <br>
+    <label>Categoria:  </label> <br>
+    <label>{{p.categoria}}</label> <br>
+    <label>Material:  </label> <br>
+    <label>{{p.material}}</label> <br>
+    <label>Acabamento:  </label> <br>
+    <label>{{p.acabamento}}</label> <br>
+    <label>Dimensão:  </label> <br>
+    <label>{{p.dimensao}}</label> <br>
   </div>
 </div>

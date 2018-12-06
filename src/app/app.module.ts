@@ -10,6 +10,8 @@ import { HttpClientModule } from '@angular/common/http'
 import { HttpClient } from '@angular/common/http'
 import	{	HttpHeaders }	from	'@angular/common/http';
 import { HttpInterceptor } from '@angular/common/http';
+import { MatFormFieldModule, MatSelectModule } from '@angular/material';
+import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,10 @@ import { HttpInterceptor } from '@angular/common/http';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MatSelectModule,
+    MatFormFieldModule,
+    NgxMatSelectSearchModule
   ],
   providers: [],
   bootstrap: [AppComponent]

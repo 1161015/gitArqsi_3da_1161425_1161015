@@ -11,17 +11,13 @@ import { ProdutoService } from '../produto.service';
 })
 
 export class ProdutoComponent implements OnInit {
-  produtos: Produto[];
+  produtos: Produto[] = [
+    {id: 1, nome: 'Steak'}];
   produtoCriar : boolean = false;
   produtoEditar : boolean = false;
   produtoApagar : boolean = false;
   produtosListar : boolean = false;
   produtoProcurar : boolean = false;
-
-  @Input() produto: Produto = {
-    id: 1,
-    nome: 'Armário'
-  };
 
   constructor(
     private route: ActivatedRoute,
@@ -97,8 +93,8 @@ export class ProdutoComponent implements OnInit {
     this.location.back();
   }
 
-  save(): void {
-    this.produtoService.updateProduto(this.produto)
+  save(produto): void {
+    this.produtoService.updateProduto(produto)
       .subscribe(() => this.goBack());
   }
 }
