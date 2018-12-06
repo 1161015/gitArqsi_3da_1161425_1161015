@@ -1,4 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { Location } from '@angular/common';
+import { ActivatedRoute } from '@angular/router';
+import { Item } from './item';
+import { ItemService } from '../item.service';
 
 @Component({
   selector: 'app-item',
