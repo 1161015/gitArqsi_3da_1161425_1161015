@@ -27,13 +27,7 @@
     </div>
     <br>
     <span>Categoria: </span>
-    <mat-form-field>
-      <mat-select placeholder="Categoria">
-        <mat-option *ngFor="let p of produtos" [value]="p">
-          {{p.categoria}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <label>{{p.categoria}}</label>
     <br>
     <span>Material: </span>
     <mat-form-field>
@@ -158,10 +152,5 @@
       </mat-form-field>
     </div>
     <br>
-    <div>
-      <span>Nome: </span>
-      <span>{{p.nome}}</span> <br>
-    </div>
-
   </div>
 </ng-template>
