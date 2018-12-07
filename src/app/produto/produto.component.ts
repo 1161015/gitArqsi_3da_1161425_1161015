@@ -12,11 +12,11 @@ import { ProdutoService } from '../produto.service';
 
 export class ProdutoComponent implements OnInit {
   produtos: Produto[];
-  produtoCriar : boolean = false;
-  produtoEditar : boolean = false;
-  produtoApagar : boolean = false;
-  produtosListar : boolean = false;
-  produtoProcurar : boolean = false;
+  statusMessage: string;
+  produtoCriar: boolean = false;
+  produtoEditar: boolean = false;
+  produtoApagar: boolean = false;
+  produtosListar: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -24,55 +24,45 @@ export class ProdutoComponent implements OnInit {
     private location: Location
   ) { }
 
-  criarProduto(){
-    this.produtoCriar=true;
-    this.produtoEditar=false;
-    this.produtoApagar=false;
-    this.produtoProcurar=false;
-    this.produtosListar=false;
+  criarProduto() {
+    this.produtoCriar = true;
+    this.produtoEditar = false;
+    this.produtoApagar = false;
+    this.produtosListar = false;
   }
 
-  editarProduto(){
-    this.produtoCriar=false;
-    this.produtoEditar=true;
-    this.produtoApagar=false;
-    this.produtoProcurar=false;
-    this.produtosListar=false;
+  editarProduto() {
+    this.produtoCriar = false;
+    this.produtoEditar = true;
+    this.produtoApagar = false;
+    this.produtosListar = false;
   }
 
-  apagarProduto(){
-    this.produtoCriar=false;
-    this.produtoEditar=false;
-    this.produtoApagar=true;
-    this.produtoProcurar=false;
-    this.produtosListar=false;
+  apagarProduto() {
+    this.produtoCriar = false;
+    this.produtoEditar = false;
+    this.produtoApagar = true;
+    this.produtosListar = false;
   }
 
-  listarProduto(){
-    this.produtoCriar=false;
-    this.produtoEditar=false;
-    this.produtoApagar=false;
-    this.produtoProcurar=false;
-    this.produtosListar=true;
+  listarProduto() {
+    this.produtoCriar = false;
+    this.produtoEditar = false;
+    this.produtoApagar = false;
+    this.produtosListar = true;
   }
 
-  procurarProduto(){
-    this.produtoCriar=false;
-    this.produtoEditar=false;
-    this.produtoApagar=false;
-    this.produtoProcurar=true;
-    this.produtosListar=false;
-  }
 
-  
   getProdutos(): void {
     this.produtoService.getProdutos()
-      .subscribe(produtos => this.produtos = produtos);
+      .subscribe(produtos => this.produtos = produtos,
+        error => { this.statusMessage = "Error: Service Unavailable"; });
   }
 
   delete(produto: Produto): void {
     this.produtos = this.produtos.filter(p => p !== produto);
-    this.produtoService.deleteProduto(produto).subscribe();
+    this.produtoService.deleteProduto(produto).subscribe( 
+      error => { this.statusMessage = "Error: Service Unavailable"; });
   }
 
   add(nome: string): void {
@@ -81,11 +71,11 @@ export class ProdutoComponent implements OnInit {
     this.produtoService.addProduto({ nome } as Produto)
       .subscribe(produto => {
         this.produtos.push(produto);
-      });
+      }, error => { this.statusMessage = "Error: Service Unavailable"; });
   }
 
   ngOnInit() {
-    //this.getProdutos();
+    this.getProdutos();
   }
 
   goBack(): void {
@@ -94,6 +84,6 @@ export class ProdutoComponent implements OnInit {
 
   save(produto): void {
     this.produtoService.updateProduto(produto)
-      .subscribe(() => this.goBack());
+      .subscribe(() => this.goBack(), error => { this.statusMessage = "Error: Service Unavailable"; });
   }
 }

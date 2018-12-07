@@ -4,6 +4,8 @@ import { Observable, of } from 'rxjs';
 import { catchError, map, tap } from 'rxjs/operators';
 import { Produto } from './produto/produto';
 import { HttpInterceptor } from '@angular/common/http';
+import {HttpErrorResponse} from '@angular/common/http'
+
 
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
@@ -24,24 +26,17 @@ export class ProdutoService {
   /** GET (id)**/
   getProduto(id: number): Observable<Produto> {
     const url = `${this.produtosUrl}/${id}`;
-    return this.http.get<Produto>(url).pipe(
-      catchError(this.handleError<Produto>(`getProduto id=${id}`))
-    );
+    return this.http.get<Produto>(url);
   }
 
   /** GET **/
-  getProdutos (): Observable<Produto[]> {
-    return this.http.get<Produto[]>(this.produtosUrl)
-      .pipe(
-        catchError(this.handleError('getProdutos', []))
-      );
+  getProdutos(): Observable<Produto[]> {
+    return this.http.get<Produto[]>(this.produtosUrl);
   }
 
   /** POST **/
   addProduto (produto: Produto): Observable<Produto> {
-    return this.http.post<Produto>(this.produtosUrl, produto, httpOptions).pipe(
-      catchError(this.handleError<Produto>('addProduto'))
-    );
+    return this.http.post<Produto>(this.produtosUrl, produto, httpOptions);
   }
 
   /** DELETE **/
@@ -49,16 +44,12 @@ export class ProdutoService {
     const id = typeof produto === 'number' ? produto : produto.id;
     const url = `${this.produtosUrl}/${id}`;
 
-    return this.http.delete<Produto>(url, httpOptions).pipe(
-      catchError(this.handleError<Produto>('deleteProduto'))
-    );
+    return this.http.delete<Produto>(url, httpOptions);
   }
   
   /** PUT **/
   updateProduto (produto: Produto): Observable<any> {
-    return this.http.put(this.produtosUrl, produto, httpOptions).pipe(
-      catchError(this.handleError<any>('updateProduto'))
-    );
+    return this.http.put(this.produtosUrl, produto, httpOptions);
   }
 
   /**
@@ -67,13 +58,17 @@ export class ProdutoService {
    * @param operation - name of the operation that failed
    * @param result - optional value to return as the observable result
    */
-  private handleError<T> (operation = 'operation', result?: T) {
-    return (error: any): Observable<T> => {
 
-      console.error(error); 
-
-      return of(result as T);
-    };
-  }
+  private handleError(err : HttpErrorResponse) {
+    if(err.error instanceof ErrorEvent){
+    console.error('An error occurred: ', err.error.message);
+    }
+    else{
+    console.error(
+    `Web Api returned code ${err.status}, ` + ` Response body was: ${err.error}`
+    );
+    }
+    return Observable.throw(err);
+    }
 
 }

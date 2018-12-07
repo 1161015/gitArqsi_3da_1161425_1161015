@@ -13,6 +13,9 @@ import { HttpInterceptor } from '@angular/common/http';
 import { MatFormFieldModule, MatSelectModule } from '@angular/material';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
 import { FormControl, ReactiveFormsModule} from '@angular/forms';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
 
 @NgModule({
   declarations: [
@@ -29,10 +32,15 @@ import { FormControl, ReactiveFormsModule} from '@angular/forms';
     MatSelectModule,
     MatFormFieldModule,
     NgxMatSelectSearchModule,
+    HttpClientInMemoryWebApiModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule, 
+    MaterialModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule { 
+ 
+}

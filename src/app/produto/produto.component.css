@@ -10,7 +10,8 @@ label {
   
   input {
     height: 2em;
-    font-size: 1em;
+    width: 10em;
+    font-size: 0.8em;
     padding-left: .4em;
   }
   
