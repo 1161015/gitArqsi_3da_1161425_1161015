@@ -15,7 +15,7 @@ const httpOptions = {
 
 export class ItemService {
 
-  private itensUrl = 'api/item';  // URL to web api
+  private itensUrl = '';  // URL to web api
 
   constructor(
     private http: HttpClient

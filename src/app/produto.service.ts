@@ -15,7 +15,7 @@ const httpOptions = {
 
 export class ProdutoService {
 
-  private produtosUrl = 'https://sic20181111064858.azurewebsites.net/api/produto';  // URL to web api
+  private produtosUrl = 'https://sicarqsi2018.azurewebsites.net/api/produto';  // URL to web api
 
   constructor(
     private http: HttpClient

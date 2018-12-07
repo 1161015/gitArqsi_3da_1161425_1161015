@@ -11,8 +11,7 @@ import { ProdutoService } from '../produto.service';
 })
 
 export class ProdutoComponent implements OnInit {
-  produtos: Produto[] = [
-    {id: 1, nome: 'Steak'}];
+  produtos: Produto[];
   produtoCriar : boolean = false;
   produtoEditar : boolean = false;
   produtoApagar : boolean = false;

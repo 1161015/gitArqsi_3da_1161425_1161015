@@ -1,0 +1,99 @@
+/* HeroDetailComponent's private CSS styles */
+label {
+    display: inline-block;
+    width: 3em;
+    margin: .5em 0;
+    color: black;
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+  
+  input {
+    height: 2em;
+    font-size: 1em;
+    padding-left: .4em;
+  }
+  
+  .margin{
+    margin-top: 5em;
+  }
+
+  span{
+    font-size: 1.2em;
+    color: black;;
+    font-family: Calibri, sans-serif;
+  }
+
+  
+h1 {
+    font-size: 2.5em;
+    color: #5F9EA0;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    font-family: Calibri, sans-serif;
+}
+
+h4 {
+    color: white;
+    font-weight: bold;
+    font-size: 2.2em;
+    font-family: Calibri, sans-serif;
+}
+
+h2 {
+    font-size: 0.8em;
+    color: black;
+    font-family: Calibri, sans-serif;
+}
+
+  button {
+    margin-top: 20px;
+    font-family: Arial;
+    background-color: #eee;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer; cursor: hand;
+  }
+  button:hover {
+    background-color: #cfd8dc;
+  }
+  button:disabled {
+    background-color: #eee;
+    color: #ccc;
+    cursor: auto;
+  }
+
+
+  .buttonA {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 10px 25px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 11px;
+    margin: 3px 1px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    cursor: pointer;
+  }
+  
+  .button2 {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #5F9EA0;
+  }
+  
+  .button2:hover {
+    background-color: #008CBA;
+    color: white;
+  }
+  
+   
+  /*
+  Copyright 2017-2018 Google Inc. All Rights Reserved.
+  Use of this source code is governed by an MIT-style license that
+  can be found in the LICENSE file at http://angular.io/license
+  */

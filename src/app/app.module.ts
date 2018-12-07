@@ -12,6 +12,7 @@ import	{	HttpHeaders }	from	'@angular/common/http';
 import { HttpInterceptor } from '@angular/common/http';
 import { MatFormFieldModule, MatSelectModule } from '@angular/material';
 import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
+import { FormControl, ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,9 @@ import { NgxMatSelectSearchModule } from 'ngx-mat-select-search';
     HttpClientModule,
     MatSelectModule,
     MatFormFieldModule,
-    NgxMatSelectSearchModule
+    NgxMatSelectSearchModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
