@@ -14,143 +14,254 @@
   <div *ngIf="produtoEditar" style="text-align:center">
     <span>Produto</span>
     <mat-form-field>
-      <mat-select placeholder="Produto">
+      <mat-select [(ngModel)]="idProdutoEdicao" placeholder="Produto">
         <mat-option *ngFor="let p of produtos" value="{{p.id}}">
           Nome: {{p.nome}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-    <br>
+    <button (click)="edicaoProduto(idProdutoEdicao)">Listar</button>
+  </div>
+
+  <div *ngIf="produtoEdicao" style="text-align:center">
     <div>
       <span>Nome: </span>
-      <input [(ngModel)]="p.nome" placeholder="nome" />
+      <input [(ngModel)]="nomeProdutoEd" placeholder="{{nomeProdutoEdicao}}" />
     </div>
     <br>
     <span>Categoria: </span>
-    <label>{{p.categoria}}</label>
+    <label>{{categoriaProdutoEdicao}}</label>
+    <br>
+    <span>Produtos Filhos: </span>
+    <mat-form-field>
+      <mat-select placeholder="Produto" [(ngModel)]="filhos" multiple>
+        <mat-option *ngFor="let f of produtos" [value]="f.id">
+          {{f.nome}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Obrigatoriedade" [(ngModel)]="Obrigatoriedade">
+        <mat-option value="true">Sim</mat-option>
+        <mat-option value="false">Nao</mat-option>
+      </mat-select>
+    </mat-form-field>
     <br>
     <span>Material: </span>
     <mat-form-field>
-      <mat-select placeholder="Material">
-        <mat-option *ngFor="let p of produtos" [value]="p">
-          {{p.materiais}}
+      <mat-select placeholder="Material" [(ngModel)]="materialProduto" multiple>
+        <mat-option *ngFor="let m of materiais" [value]="m">
+          {{m.descricao}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <br>
-    <span>Acabamento: </span>
-    <mat-form-field>
-      <mat-select placeholder="Acabamento">
-        <mat-option *ngFor="let p of produtos" [value]="p">
-          {{p.acabamentos}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <div>
+      <span>Restrição: </span>
+      <br>
+      <input placeholder="{{ocupacaominima}}" [(ngModel)]="ocupMin" />
+      <br>
+      <input placeholder="{{ocupacaomaxima}}" [(ngModel)]="ocupMax" />
+      <div>
+        <mat-form-field>
+          <mat-select placeholder="Material-Acabamento" [(ngModel)]="materialAcabamento">
+            <mat-option value="true">True</mat-option>
+            <mat-option value="false">False</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
     <br>
-    <div><span>Altura Mínima: </span>
-      <input [(ngModel)]="p.dimensoes.altura.min" placeholder="altura mínima" />
+    <div>
+      <span>Altura: </span>
+      <button class="buttonB button2" (click)="chamarContinuaA()">Contínua</button>
+      <button class="buttonB button2" (click)="chamarDiscretaA()">Discreta</button>
     </div>
-    <div><span>Altura Máxima: </span>
-      <input [(ngModel)]="p.dimensoes.altura.max" placeholder="altura máxima" />
+    <div>
+      <span>Largura: </span>
+      <button class="buttonB button2" (click)="chamarContinuaL()">Contínua</button>
+      <button class="buttonB button2" (click)="chamarDiscretaL()">Discreta</button>
     </div>
-    <div><span>Largura Mínima: </span>
-      <input [(ngModel)]="p.dimensoes.largura.min" placeholder="largura mínima" />
+    <div>
+      <span>Profundidade: </span>
+      <button class="buttonB button2" (click)="chamarContinuaP()">Contínua</button>
+      <button class="buttonB button2" (click)="chamarDiscretaP()">Discreta</button>
     </div>
-    <div><span>Largura Máxima: </span>
-      <input [(ngModel)]="p.dimensoes.largura.max" placeholder="largura máxima" />
-    </div>
-    <div><span>Profundidade Mínima: </span>
-      <input [(ngModel)]="p.dimensoes.profundidade.min" placeholder="profundidade mínima" />
-    </div>
-    <div><span>Profundidade Máxima: </span>
-      <input [(ngModel)]="p.dimensoes.profundidade.max" placeholder="profundidade máxima" />
-    </div>
-    <div><span>Unidade: </span>
-      <input [(ngModel)]="p.unidade.tipoUnidades" placeholder="unidade" />
-    </div>
-    <button (click)="save()">save</button>
+    <br>
+    <button class="buttonA button2" (click)="save(idProdutoEdicao)">Editar Produto</button>
   </div>
 
   <div *ngIf="produtoCriar" style="text-align:center">
     <div>
       <br>
       <span>Nome: </span>
-      <input placeholder="nome" />
+      <input placeholder="nome" [(ngModel)]="nomeProduto" />
     </div>
     <br>
-    <div style="width:500px;" style="text-align:center">
-      <span>Categoria</span>
-      <mat-form-field>
-        <mat-select placeholder="Categoria">
-          <mat-option *ngFor="let p of produtos" [value]="p.categoria">
-            {{p.categoria}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
+    <span>Produtos Filhos: </span>
+    <mat-form-field>
+      <mat-select placeholder="Produto" [(ngModel)]="filhos" multiple>
+        <mat-option *ngFor="let f of produtos" [value]="f.id">
+          {{f.nome}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Obrigatoriedade" [(ngModel)]="Obrigatoriedade">
+        <mat-option value="true">Sim</mat-option>
+        <mat-option value="false">Nao</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br>
+    <br>
+    <span>Categoria: </span>
+    <mat-form-field>
+      <mat-select placeholder="Categoria" [(ngModel)]="categoriaProduto">
+        <mat-option *ngFor="let c of categorias" [value]="c">
+          {{c.taxonomia}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
     <br>
     <span>Material: </span>
     <mat-form-field>
-      <mat-select placeholder="Material">
-        <mat-option *ngFor="let p of produtos" [value]="p.materiais">
-          {{p.materiais}}
+      <mat-select placeholder="Material" [(ngModel)]="materialProduto" multiple>
+        <mat-option *ngFor="let m of materiais" [value]="m">
+          {{m.descricao}}
         </mat-option>
       </mat-select>
     </mat-form-field>
     <br>
-    <span>Acabamento: </span>
-    <mat-form-field>
-      <mat-select placeholder="Acabamento">
-        <mat-option *ngFor="let p of produtos" [value]="p.acabamentos">
-          {{p.acabamentos}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <br>
-    <div><span>Dimensão: </span>
-      <input placeholder="dimensão" />
+    <div>
+      <span>Restrição: </span>
+      <br>
+      <input placeholder="Ocupação mínima" [(ngModel)]="ocupMin" />
+      <br>
+      <input placeholder="Ocupação máxima" [(ngModel)]="ocupMax" />
+      <br>
+      <div>
+        <mat-form-field>
+          <mat-select placeholder="Material-Acabamento" [(ngModel)]="materialAcabamento">
+            <mat-option value="true">Sim</mat-option>
+            <mat-option value="false">Nao</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
     </div>
-    <button (click)="save()">save</button>
+    <br>
+    <div>
+      <span>Altura: </span>
+      <button class="buttonB button2" (click)="chamarContinuaA()">Contínua</button>
+      <button class="buttonB button2" (click)="chamarDiscretaA()">Discreta</button>
+    </div>
+    <div>
+      <span>Largura: </span>
+      <button class="buttonB button2" (click)="chamarContinuaL()">Contínua</button>
+      <button class="buttonB button2" (click)="chamarDiscretaL()">Discreta</button>
+    </div>
+    <div>
+      <span>Profundidade: </span>
+      <button class="buttonB button2" (click)="chamarContinuaP()">Contínua</button>
+      <button class="buttonB button2" (click)="chamarDiscretaP()">Discreta</button>
+    </div>
+    <div>
+      <br>
+      <span>Unidade: </span>
+      <input [(ngModel)]="unidade" placeholder="unidade" />
+    </div>
+    <button class="buttonA button2" (click)="add(nomeProduto)">Criar Produto</button>
   </div>
 
+  <div *ngIf="continuaA" style="text-align:center">
+    <div>
+      <br>
+      <span>Altura mínima: </span>
+      <input [(ngModel)]="alturaMinima" placeholder="dimensão" />
+    </div>
+    <div>
+      <br>
+      <span>Altura máxima: </span>
+      <input [(ngModel)]="alturaMaxima" placeholder="dimensão" />
+    </div>
+  </div>
+  <div *ngIf="continuaL" style="text-align:center">
+    <div>
+      <br>
+      <span>Largura mínima: </span>
+      <input [(ngModel)]="larguraMinima" placeholder="dimensão" />
+    </div>
+    <div>
+      <br>
+      <span>Largura máxima: </span>
+      <input [(ngModel)]="larguraMaxima" placeholder="dimensão" />
+    </div>
+  </div>
+  <div *ngIf="continuaP" style="text-align:center">
+    <div>
+      <br>
+      <span>Profundidade mínima: </span>
+      <input [(ngModel)]="profundidadeMinima" placeholder="dimensão" />
+    </div>
+    <div>
+      <br>
+      <span>Profundidade máxima: </span>
+      <input [(ngModel)]="profundidadeMaxima" placeholder="dimensão" />
+    </div>
+  </div>
+
+
+  <div *ngIf="discretaA" style="text-align:center">
+    <div>
+      <br>
+      <span>Alturas: </span>
+      <input [(ngModel)]="altura" placeholder="dimensão" />
+      <button class="buttonB button2" (click)="adicionarAltura(altura)">Inserir</button>
+    </div>
+  </div>
+  <div *ngIf="discretaL" style="text-align:center">
+    <div>
+      <br>
+      <span>Larguras: </span>
+      <input [(ngModel)]="largura" placeholder="dimensão" />
+      <button class="buttonB button2" (click)="adicionarLargura(largura)">Inserir</button>
+    </div>
+  </div>
+  <div *ngIf="discretaP" style="text-align:center">
+    <div>
+      <br>
+      <span>Profundidades: </span>
+      <input [(ngModel)]="profundidade" placeholder="dimensão" />
+      <button class="buttonB button2" (click)="adicionarProfundidade(profundidade)">Inserir</button>
+    </div>
+  </div>
 
   <div *ngIf="produtoApagar" style="text-align:center">
     <span>Produto</span>
     <mat-form-field>
-      <mat-select placeholder="Produto">
-        <mat-option *ngFor="let p of produtos" value="{{p.id}}">
+      <mat-select [(ngModel)]="produtoApaga" placeholder="Produto">
+        <mat-option *ngFor="let p of produtos" [value]="p">
           Nome: {{p.nome}}
         </mat-option>
       </mat-select>
     </mat-form-field>
+    <button class="buttonC button2" (click)="delete(produtoApaga)">Apagar</button>
     <br>
-    <button (click)="delete(p)">Apagar</button>
-  </div>
-
-  <div *ngIf="produtoListar" style="text-align:center">
-    <span>Produtos</span>
-    <mat-form-field>
-      <mat-select placeholder="Produto">
-        <mat-option *ngFor="let p of produtos" value="{{p.id}}">
-          Nome: {{p.nome}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
-    <br>
-    <button (click)="delete(p)">Apagar</button>
   </div>
 
   <div *ngIf="produtosListar" style="text-align:center">
-    <div style="width:500px;" style="text-align:center">
-      <span>Produto</span>
-      <mat-form-field>
-        <mat-select placeholder="Produto">
-          <mat-option *ngFor="let p of produtos" value="{{p.id}}">
-            Nome: {{p.nome}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
-    <br>
+    <span>Produtos</span>
+    <mat-form-field class="x">
+      <mat-select [(ngModel)]="produtoParaListar" placeholder="Produto">
+        <mat-option class="m" *ngFor="let p of produtos" value="{{p}}">
+          Nome:{{p.nome}}; Categoria:{{p.categoria.taxonomia}};
+          Altura:{{p.dimensoes.altura.min}}-{{p.dimensoes.altura.max}};
+          Largura:{{p.dimensoes.largura.min}}-{{p.dimensoes.largura.max}};
+          Profundidade:{{p.dimensoes.profundidade.min}}-{{p.dimensoes.profundidade.max}};
+          Alturas: {{p.dimensoes.altura.discreta}}, Largura: {{p.dimensoes.largura.discreta}}
+          Restricao: Material-Acabamento: {{p.restricao.materialAcabamento}},
+          Ocupacao mínima:{{p.restricao.minOcupacao}}, Ocupacap máxima: {{p.restricao.maxOcupacao}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
   </div>
 </ng-template>
